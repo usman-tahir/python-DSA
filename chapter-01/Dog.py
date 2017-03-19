@@ -19,3 +19,27 @@ class Dog:
 
     def change_bark(self, bark):
         self.speak_text = bark
+
+    def __add__(self, other_dog):
+        name = "Puppy of %s and %s" % (self.name, other_dog.name)
+        speak_text = self.speak_text + other_dog.speak_text
+        return Dog(name, self.month, self.day, self.year + 1, speak_text)
+
+def main():
+    boy_dog = Dog("Mesa", 5, 15, 2004, "WOOF")
+    girl_dog = Dog("Sequoia", 5, 6, 2004, "Bark")
+
+    print(boy_dog.speak())
+    print(girl_dog.speak())
+    print(boy_dog.birth_date())
+    print(girl_dog.birth_date())
+    boy_dog.change_bark("woofywoofy")
+    print(boy_dog.speak())
+
+    puppy = boy_dog + girl_dog
+    print(puppy.speak())
+    print(puppy.get_name())
+    print(puppy.birth_date())
+
+if __name__ == "__main__":
+    main()
